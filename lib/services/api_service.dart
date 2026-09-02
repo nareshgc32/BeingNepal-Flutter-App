@@ -114,8 +114,8 @@ class ApiService {
     return [
       Hotel(
         id: '1',
-        name: 'Kathmandu Luxury Resort',
-        description: 'Experience luxury in the heart of Kathmandu with world-class amenities and exceptional service.',
+        name: 'Hotel Yak',
+        description: 'A premium Kathmandu stay with modern amenities, city access, and exceptional service.',
         rating: 4.8,
         reviews: 245,
         price: 15000,
@@ -129,12 +129,12 @@ class ApiService {
       ),
       Hotel(
         id: '2',
-        name: 'Pokhara Lakeside Hotel',
-        description: 'Beautiful lakeside hotel with stunning mountain views and comfortable rooms.',
+        name: 'Hotel Annapurna',
+        description: 'A well-known hotel offering comfortable rooms, dining, and central Kathmandu convenience.',
         rating: 4.6,
         reviews: 189,
         price: 12000,
-        location: 'Pokhara, Nepal',
+        location: 'Durbar Marg, Kathmandu, Nepal',
         image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=300&fit=crop',
         amenities: ['Lake View', 'Restaurant', 'Bar', 'Garden', 'Wi-Fi', 'Parking'],
         phoneNumber: '+977-61-465432',
