@@ -12,12 +12,12 @@ class HotelCard extends StatelessWidget {
   final bool isFavorite;
 
   const HotelCard({
-    Key? key,
+    super.key,
     required this.hotel,
     required this.onTap,
     required this.onFavoriteTap,
     required this.isFavorite,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class HotelCard extends StatelessWidget {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Colors.black.withValues(alpha: 0.2),
                             blurRadius: 4,
                             offset: const Offset(0, 2),
                           ),
@@ -190,7 +190,7 @@ class HotelCard extends StatelessWidget {
 
 // Loading Card Shimmer
 class HotelCardShimmer extends StatelessWidget {
-  const HotelCardShimmer({Key? key}) : super(key: key);
+  const HotelCardShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import '../services/api_service.dart';
 class HotelProvider extends ChangeNotifier {
   List<Hotel> _hotels = [];
   List<Hotel> _filteredHotels = [];
-  List<Hotel> _favorites = [];
+  final List<Hotel> _favorites = [];
   bool _isLoading = false;
   String _searchQuery = '';
   double _minPrice = 0;
