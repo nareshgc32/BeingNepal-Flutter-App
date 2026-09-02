@@ -43,7 +43,7 @@ class ApiService {
         return _getSampleHotels();
       }
     } catch (e) {
-      print('Error fetching hotels: $e');
+      debugPrint('Error fetching hotels: $e');
       return _getSampleHotels();
     }
   }
@@ -72,7 +72,7 @@ class ApiService {
       }
       return null;
     } catch (e) {
-      print('Error fetching hotel details: $e');
+      debugPrint('Error fetching hotel details: $e');
       return null;
     }
   }
@@ -105,7 +105,7 @@ class ApiService {
       }
       return [];
     } catch (e) {
-      print('Error searching hotels: $e');
+      debugPrint('Error searching hotels: $e');
       return [];
     }
   }

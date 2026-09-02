@@ -5,7 +5,7 @@ import '../services/api_service.dart';
 class HotelProvider extends ChangeNotifier {
   List<Hotel> _hotels = [];
   List<Hotel> _filteredHotels = [];
-  List<Hotel> _favorites = [];
+  final List<Hotel> _favorites = [];
   bool _isLoading = false;
   String _searchQuery = '';
   double _minPrice = 0;
@@ -30,7 +30,7 @@ class HotelProvider extends ChangeNotifier {
       _hotels = await ApiService.fetchHotels();
       _filteredHotels = List.from(_hotels);
     } catch (e) {
-      print('Error in provider: $e');
+      debugPrint('Error in provider: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -57,7 +57,7 @@ class HotelProvider extends ChangeNotifier {
                 .toList()
             : results;
       } catch (e) {
-        print('Search error: $e');
+        debugPrint('Search error: $e');
         _filteredHotels = _hotels
             .where((hotel) =>
                 hotel.name.toLowerCase().contains(query.toLowerCase()) ||
