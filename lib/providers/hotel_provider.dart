@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/hotel_provider.dart';
+import '../models/hotel_model.dart';
+import '../services/api_service.dart';
 
 class HotelProvider extends ChangeNotifier {
   List<Hotel> _hotels = [];
@@ -13,7 +13,7 @@ class HotelProvider extends ChangeNotifier {
   double _minRating = 0;
 
   // Getters
-  List<Hotel> get hotels => _filteredHotels.isEmpty ? _hotels : _filteredHotels;
+  List<Hotel> get hotels => _filteredHotels;
   List<Hotel> get favorites => _favorites;
   bool get isLoading => _isLoading;
   String get searchQuery => _searchQuery;
@@ -25,7 +25,7 @@ class HotelProvider extends ChangeNotifier {
   Future<void> fetchHotels() async {
     _isLoading = true;
     notifyListeners();
-    
+
     try {
       _hotels = await ApiService.fetchHotels();
       _filteredHotels = List.from(_hotels);
@@ -40,13 +40,13 @@ class HotelProvider extends ChangeNotifier {
   // Search hotels
   Future<void> searchHotels(String query) async {
     _searchQuery = query;
-    
+
     if (query.isEmpty) {
       _filteredHotels = List.from(_hotels);
     } else {
       _isLoading = true;
       notifyListeners();
-      
+
       try {
         final results = await ApiService.searchHotels(query);
         _filteredHotels = results.isEmpty
@@ -68,7 +68,7 @@ class HotelProvider extends ChangeNotifier {
         notifyListeners();
       }
     }
-    
+
     notifyListeners();
   }
 
@@ -121,64 +121,4 @@ class HotelProvider extends ChangeNotifier {
   bool isFavorite(String hotelId) {
     return _favorites.any((hotel) => hotel.id == hotelId);
   }
-}
-
-// Import this class from models
-class Hotel {
-  final String id;
-  final String name;
-  final String description;
-  final double rating;
-  final int reviews;
-  final double price;
-  final String location;
-  final String image;
-  final List<String> amenities;
-  final String phoneNumber;
-  final String email;
-  final double latitude;
-  final double longitude;
-  final bool isFavorite;
-
-  Hotel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.rating,
-    required this.reviews,
-    required this.price,
-    required this.location,
-    required this.image,
-    required this.amenities,
-    required this.phoneNumber,
-    required this.email,
-    required this.latitude,
-    required this.longitude,
-    this.isFavorite = false,
-  });
-
-  Hotel copyWith({bool? isFavorite}) {
-    return Hotel(
-      id: id,
-      name: name,
-      description: description,
-      rating: rating,
-      reviews: reviews,
-      price: price,
-      location: location,
-      image: image,
-      amenities: amenities,
-      phoneNumber: phoneNumber,
-      email: email,
-      latitude: latitude,
-      longitude: longitude,
-      isFavorite: isFavorite ?? this.isFavorite,
-    );
-  }
-}
-
-class ApiService {
-  static const String baseUrl = 'https://beingnepal.com/api';
-  static Future<List<Hotel>> fetchHotels() async => [];
-  static Future<List<Hotel>> searchHotels(String query) async => [];
 }
