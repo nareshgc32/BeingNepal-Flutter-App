@@ -23,7 +23,7 @@ class HotelDetailScreen extends StatelessWidget {
             expandedHeight: 280,
             pinned: true,
             backgroundColor: Colors.white,
-            foregroundColor: Colors.white,
+            foregroundColor: AppTheme.textPrimary,
             flexibleSpace: FlexibleSpaceBar(
               background: CachedNetworkImage(
                 imageUrl: hotel.image,
